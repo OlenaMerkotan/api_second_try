@@ -1,4 +1,5 @@
 from src.my_requests import MyRequests
+
 class TestCreateUsers:
     body = {
         "first_name": "Denis",
@@ -7,8 +8,8 @@ class TestCreateUsers:
     }
 
     def test_create_user(self):
-        # print(self.body.get("first_name"))
         response = MyRequests.post("/users/", self.body)
+        print(response.json())
         assert response.json()["first_name"] == self.body.get("first_name"), "First name was not created"
         assert response.json()["last_name"] == self.body.get("last_name"), "Last name was not created"
 
