@@ -1,1 +1,1 @@
-base_url = base_url = "https://send-request.me/api/companies"
+base_url = base_url = "https://send-request.me/api"
