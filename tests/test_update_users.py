@@ -1,6 +1,10 @@
+from src.assertions import Assertion
 from src.my_requests import MyRequests
+from data.status_code import StatusCode
 
 class TestUpdateUsers:
+    assertion = Assertion()
+    status_code = StatusCode
     body = {
         "first_name": "David",
         "last_name": "David",
@@ -12,4 +16,4 @@ class TestUpdateUsers:
         print(response.json())
         assert response.json()["first_name"] != "Denis", "First name was not updated"
         assert response.json()["last_name"] != "Denis", "Last name was not updated"
-        assert response.status_code == 200, f"Status code not 201, status code is {response.status_code}"
+        self.assertion.assert_status_code(response, self.status_code.OK)
